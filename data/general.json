@@ -12,7 +12,7 @@
             "unit": "degC",
             "note": "minimum, temperature is non-uniform"
         },
-        "purpose_of_run": "Attempting to speed up trtium release by sparging H2. Attempting to replicate run 1 and 3 TBR and fluence."
+        "purpose_of_run": "Attempting to speed up trtium release by sparging H2. Attempting to replicate run 1 and 3 TBR and fluence. Instant replay of irradiation on day 6."
     },
     "cover_gas": {
         "type": "1000 ppm H2 bal. He",
@@ -86,6 +86,10 @@
                 {
                     "start": "5/1/2025 13:10",
                     "end": "5/1/2025 23:23"
+                },
+                {
+                    "start": "5/6/2025 09:57",
+                    "end": "5/6/2025 21:57"
                 }
             ]
         },
@@ -185,6 +189,66 @@
                     "3": "1L_IV_4-4_OV_4-4_BL-4.csv",
                     "4": "1L_IV_4-4_OV_4-4_BL-4.csv"
                 }
+            },
+            "5": {
+                "planned_sample_time": "5/6/2025 11:07",
+                "actual_sample_time": "5/6/2025 09:17",
+                "lsc_vials_filenames": {
+                    "1": "1L_IV_4-5_OV_4-5_BL-4.csv",
+                    "2": "1L_IV_4-5_OV_4-5_BL-4.csv",
+                    "3": "1L_IV_4-5_OV_4-5_BL-4.csv",
+                    "4": "1L_IV_4-5_OV_4-5_BL-4.csv"
+                }
+            },
+            "6": {
+                "planned_sample_time": "5/6/2025 23:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "7": {
+                "planned_sample_time": "5/7/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "8": {
+                "planned_sample_time": "5/8/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "9": {
+                "planned_sample_time": "5/10/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "10": {
+                "planned_sample_time": "5/11/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
             }
         },
         "OV": {
@@ -226,6 +290,66 @@
                     "2": "1L_IV_4-4_OV_4-4_BL-4.csv",
                     "3": "1L_IV_4-4_OV_4-4_BL-4.csv",
                     "4": "1L_IV_4-4_OV_4-4_BL-4.csv"
+                }
+            },
+            "5": {
+                "planned_sample_time": "5/6/2025 11:07",
+                "actual_sample_time": "5/6/2025 09:17",
+                "lsc_vials_filenames": {
+                    "1": "1L_IV_4-5_OV_4-5_BL-4.csv",
+                    "2": "1L_IV_4-5_OV_4-5_BL-4.csv",
+                    "3": "1L_IV_4-5_OV_4-5_BL-4.csv",
+                    "4": "1L_IV_4-5_OV_4-5_BL-4.csv"
+                }
+            },
+            "6": {
+                "planned_sample_time": "5/6/2025 23:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "7": {
+                "planned_sample_time": "5/7/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "8": {
+                "planned_sample_time": "5/8/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "9": {
+                "planned_sample_time": "5/10/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
+                }
+            },
+            "10": {
+                "planned_sample_time": "5/11/2025 11:07",
+                "actual_sample_time": null,
+                "lsc_vials_filenames": {
+                    "1": null,
+                    "2": null,
+                    "3": null,
+                    "4": null
                 }
             }
         }
