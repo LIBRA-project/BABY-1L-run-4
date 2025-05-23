@@ -114,18 +114,94 @@
             "materials": [
                 {
                     "position": "A 325 - top",
-                    "material": "Zr",
+                    "material": "Nb",
+                    "designator": "Irradiation 1: Nb Packet #2",
+                    "irradiation_date": "5/1/2025",
+                    "number_of_foils": 2,
+                    "distance_to_source": {
+                        "value": 5.1,
+                        "unit": "cm"
+                    },
                     "mass": {
-                        "value": null,
+                        "value": 0.5695,
                         "unit": "g"
+                    },
+                    "mass_err": {
+                        "value": 0.0001,
+                        "unit": "g"
+                    },
+                    "thickness": {
+                        "value": 0.02,
+                        "unit": "inch"
                     }
                 },
                 {
                     "position": "A 325 - bottom",
-                    "material": "Nb",
+                    "material": "Zr",
+                    "designator": "Irradiation 1: Zr Packet #1",
+                    "irradiation_date": "5/1/2025",
+                    "number_of_foils": 8,
+                    "distance_to_source": {
+                        "value": 5.1,
+                        "unit": "cm"
+                    },
                     "mass": {
-                        "value": null,
+                        "value": 0.9036,
                         "unit": "g"
+                    },
+                    "mass_err": {
+                        "value": 0.0001,
+                        "unit": "g"
+                    },
+                    "thickness": {
+                        "value": 0.04,
+                        "unit": "inch"
+                    }
+                },
+                {         
+                    "position": "A 325 - top",
+                    "material": "Nb",
+                    "designator": "Irradiation 2: Nb Packet #1",
+                    "irradiation_date": "5/6/2025",
+                    "number_of_foils": 2,
+                    "distance_to_source": {
+                        "value": 5.1,
+                        "unit": "cm"
+                    },
+                    "mass": {
+                        "value": 0.5678,
+                        "unit": "g"
+                    },
+                    "mass_err": {
+                        "value": 0.0002,
+                        "unit": "g"
+                    },
+                    "thickness": {
+                        "value": 0.02,
+                        "unit": "inch"
+                    }
+                },
+                {
+                    "position": "A 325 - bottom",
+                    "material": "Zr",
+                    "designator": "Irradiation 2: Zr Packet #2",
+                    "irradiation_date": "5/6/2025",
+                    "number_of_foils": 6,
+                    "distance_to_source": {
+                        "value": 5.1,
+                        "unit": "cm"
+                    },
+                    "mass": {
+                        "value": 0.6795,
+                        "unit": "g"
+                    },
+                    "mass_err": {
+                        "value": 0.0002,
+                        "unit": "g"
+                    },
+                    "thickness": {
+                        "value": 0.03,
+                        "unit": "inch"
                     }
                 }
             ]
