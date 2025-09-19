@@ -1,7 +1,7 @@
 import openmc
-from libra_toolbox.neutronics.neutron_source import A325_generator_diamond
 from libra_toolbox.neutronics import vault
-import helpers
+from libra_toolbox.neutronics.neutron_source import A325_generator_diamond
+from libra_toolbox.neutronics.materials import *
 
 
 def baby_geometry(x_c: float, y_c: float, z_c: float):
@@ -167,15 +167,15 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
     sphere = openmc.Sphere(x0=x_c, y0=y_c, z0=z_c, r=50.00)  # before r=50.00
 
     ######## Lead bricks positioned under the source #################
-    positions = [
+    lead_positions = [
         (x_c - 13.50, y_c, z_c - z_tab),
-        (x_c - 4.50, y_c, z_c - z_tab),
+        (x_c - 2.96, y_c, z_c - z_tab),
         (x_c + 36.50, y_c, z_c - z_tab),
-        (x_c + 27.50, y_c, z_c - z_tab),
+        (x_c + 25.96, y_c, z_c - z_tab),
     ]
 
     lead_blocks = []
-    for position in positions:
+    for position in lead_positions:
         lead_block_region = openmc.model.RectangularParallelepiped(
             position[0] - lead_width / 2,
             position[0] + lead_width / 2,
@@ -185,6 +185,25 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
             position[2] + lead_height,
         )
         lead_blocks.append(lead_block_region)
+
+    src_supp_length = 40.00
+    src_supp_height = 20.00
+    src_supp_width = 2.54
+    src_supp_position = [
+        (x_c - 13.50 + lead_width / 2, y_c, z_c - z_tab),
+        (x_c + 25.96 + lead_width / 2, y_c, z_c - z_tab),
+    ]
+    src_supports = []
+    for position in src_supp_position:
+        source_support = openmc.model.RectangularParallelepiped(
+            position[0],
+            position[0] + src_supp_width,
+            position[1] - src_supp_length / 2,
+            position[1] + src_supp_length / 2,
+            position[2],
+            position[2] + src_supp_height,
+        )
+        src_supports.append(source_support)
 
     # regions
     source_wall_region = -ext_cyl_source & +source_region
@@ -209,6 +228,8 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
     lead_block_2_region = -lead_blocks[1]
     lead_block_3_region = -lead_blocks[2]
     lead_block_4_region = -lead_blocks[3]
+    src_supp_1_region = -src_supports[0] & ~source_wall_region & ~source_region
+    src_supp_2_region = -src_supports[1] & ~source_wall_region & ~source_region
     he_region = (
         +z_plane_5
         & -z_plane_12
@@ -228,6 +249,8 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
         & ~lead_block_2_region
         & ~lead_block_3_region
         & ~lead_block_4_region
+        & ~src_supp_1_region
+        & ~src_supp_2_region
     )
     sphere_region = (
         -sphere
@@ -248,6 +271,8 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
         & ~lead_block_2_region
         & ~lead_block_3_region
         & ~lead_block_4_region
+        & ~src_supp_1_region
+        & ~src_supp_2_region
     )
 
     # cells
@@ -256,37 +281,41 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
     source_region = openmc.Cell(region=source_region)
     source_region.fill = None
     epoxy_cell = openmc.Cell(region=epoxy_region)
-    epoxy_cell.fill = epoxy
+    epoxy_cell.fill = Epoxy
     alumina_compressed_cell = openmc.Cell(region=alumina_compressed_region)
-    alumina_compressed_cell.fill = alumina
+    alumina_compressed_cell.fill = Alumina
     vessel_cell = openmc.Cell(region=vessel_region)
-    vessel_cell.fill = inconel625
+    vessel_cell.fill = Inconel625
     alumina_cell = openmc.Cell(region=alumina_region)
-    alumina_cell.fill = alumina
+    alumina_cell.fill = Alumina
     cllif_cell = openmc.Cell(region=cllif_region)
-    cllif_cell.fill = cllif_nat  # cllif_nat or lithium_lead
+    cllif_cell.fill = Cllif  # Cllif or lithium_lead
     gap_cell = openmc.Cell(region=gap_region)
-    gap_cell.fill = he
+    gap_cell.fill = Helium
     cap_cell = openmc.Cell(region=cap_region)
-    cap_cell.fill = inconel625
+    cap_cell.fill = Inconel625
     firebrick_cell = openmc.Cell(region=firebrick_region)
-    firebrick_cell.fill = firebrick
+    firebrick_cell.fill = Firebrick
     heater_cell = openmc.Cell(region=heater_region)
-    heater_cell.fill = heater_mat
+    heater_cell.fill = Heater_mat
     table_cell = openmc.Cell(region=table_under_source_region)
-    table_cell.fill = epoxy
+    table_cell.fill = Epoxy
     sphere_cell = openmc.Cell(region=sphere_region)
-    sphere_cell.fill = air
+    sphere_cell.fill = Air
     he_cell = openmc.Cell(region=he_region)
-    he_cell.fill = he
+    he_cell.fill = Helium
     lead_block_1_cell = openmc.Cell(region=lead_block_1_region)
-    lead_block_1_cell.fill = lead
+    lead_block_1_cell.fill = Lead
     lead_block_2_cell = openmc.Cell(region=lead_block_2_region)
-    lead_block_2_cell.fill = lead
+    lead_block_2_cell.fill = Lead
     lead_block_3_cell = openmc.Cell(region=lead_block_3_region)
-    lead_block_3_cell.fill = lead
+    lead_block_3_cell.fill = Lead
     lead_block_4_cell = openmc.Cell(region=lead_block_4_region)
-    lead_block_4_cell.fill = lead
+    lead_block_4_cell.fill = Lead
+    src_supp_1_cell = openmc.Cell(region=src_supp_1_region)
+    src_supp_1_cell.fill = HDPE
+    src_supp_2_cell = openmc.Cell(region=src_supp_2_region)
+    src_supp_2_cell.fill = HDPE
 
     cells = [
         source_wall_cell_1,
@@ -307,6 +336,8 @@ def baby_geometry(x_c: float, y_c: float, z_c: float):
         lead_block_2_cell,
         lead_block_3_cell,
         lead_block_4_cell,
+        src_supp_1_cell,
+        src_supp_2_cell,
     ]
 
     return sphere, cllif_cell, cells
@@ -320,16 +351,17 @@ def baby_model():
     """
 
     materials = [
-        inconel625,
-        cllif_nat,
+        Inconel625,
+        Cllif,
         SS304,
-        heater_mat,
-        firebrick,
-        alumina,
-        lead,
-        air,
-        epoxy,
-        he,
+        Heater_mat,
+        Firebrick,
+        Alumina,
+        Lead,
+        Air,
+        Epoxy,
+        Helium,
+        HDPE,
     ]
 
     # BABY coordinates
@@ -375,126 +407,14 @@ def baby_model():
     return model
 
 
-############################################################################
-# Define Materials
-# Source: PNNL Materials Compendium April 2021
-# PNNL-15870, Rev. 2
-inconel625 = openmc.Material(name="Inconel 625")
-inconel625.add_element("C", 0.000990, "wo")
-inconel625.add_element("Al", 0.003960, "wo")
-inconel625.add_element("Si", 0.004950, "wo")
-inconel625.add_element("P", 0.000148, "wo")
-inconel625.add_element("S", 0.000148, "wo")
-inconel625.add_element("Ti", 0.003960, "wo")
-inconel625.add_element("Cr", 0.215000, "wo")
-inconel625.add_element("Mn", 0.004950, "wo")
-inconel625.add_element("Fe", 0.049495, "wo")
-inconel625.add_element("Co", 0.009899, "wo")
-inconel625.add_element("Ni", 0.580000, "wo")
-inconel625.add_element("Nb", 0.036500, "wo")
-inconel625.add_element("Mo", 0.090000, "wo")
-inconel625.set_density("g/cm3", 8.44)
-
-# lif-licl - natural - pure
-licl_frac = 0.695
-cllif_nat = openmc.Material(name="ClLiF natural")
-cllif_nat.add_element("F", 0.5 * (1 - licl_frac), "ao")
-cllif_nat.add_element("Li", 0.5 * (1 - licl_frac) + 0.5 * licl_frac, "ao")
-cllif_nat.add_element("Cl", 0.5 * licl_frac, "ao")
-cllif_nat.set_density(
-    "g/cm3", helpers.get_exp_cllif_density(650)
-)  # 69.5 at. % LiCL at 650 C
-
-# Stainless Steel 304 from PNNL Materials Compendium (PNNL-15870 Rev2)
-SS304 = openmc.Material(name="Stainless Steel 304")
-# SS304.temperature = 700 + 273
-SS304.add_element("C", 0.000800, "wo")
-SS304.add_element("Mn", 0.020000, "wo")
-SS304.add_element("P", 0.000450, "wo")
-SS304.add_element("S", 0.000300, "wo")
-SS304.add_element("Si", 0.010000, "wo")
-SS304.add_element("Cr", 0.190000, "wo")
-SS304.add_element("Ni", 0.095000, "wo")
-SS304.add_element("Fe", 0.683450, "wo")
-SS304.set_density("g/cm3", 8.00)
-
-heater_mat = openmc.Material(name="heater")
-heater_mat.add_element("C", 0.000990, "wo")
-heater_mat.add_element("Al", 0.003960, "wo")
-heater_mat.add_element("Si", 0.004950, "wo")
-heater_mat.add_element("P", 0.000148, "wo")
-heater_mat.add_element("S", 0.000148, "wo")
-heater_mat.add_element("Ti", 0.003960, "wo")
-heater_mat.add_element("Cr", 0.215000, "wo")
-heater_mat.add_element("Mn", 0.004950, "wo")
-heater_mat.add_element("Fe", 0.049495, "wo")
-heater_mat.add_element("Co", 0.009899, "wo")
-heater_mat.add_element("Ni", 0.580000, "wo")
-heater_mat.add_element("Nb", 0.036500, "wo")
-heater_mat.add_element("Mo", 0.090000, "wo")
-heater_mat.set_density("g/cm3", 2.44)
-
-# Using Microtherm with 1 a% Al2O3, 27 a% ZrO2, and 72 a% SiO2
-# https://www.foundryservice.com/product/microporous-silica-insulating-boards-mintherm-microtherm-1925of-grades/
-firebrick = openmc.Material(name="Firebrick")
-# Estimate average temperature of Firebrick to be around 300 C
-# Firebrick.temperature = 273 + 300
-firebrick.add_element("Al", 0.004, "ao")
-firebrick.add_element("O", 0.666, "ao")
-firebrick.add_element("Si", 0.240, "ao")
-firebrick.add_element("Zr", 0.090, "ao")
-firebrick.set_density("g/cm3", 0.30)
-
-# alumina insulation
-# data from https://precision-ceramics.com/materials/alumina/
-alumina = openmc.Material(name="Alumina insulation")
-alumina.add_element("O", 0.6, "ao")
-alumina.add_element("Al", 0.4, "ao")
-alumina.set_density("g/cm3", 3.98)
-
-# air
-air = openmc.Material(name="Air")
-air.add_element("C", 0.00012399, "wo")
-air.add_element("N", 0.75527, "wo")
-air.add_element("O", 0.23178, "wo")
-air.add_element("Ar", 0.012827, "wo")
-air.set_density("g/cm3", 0.0012)
-
-# epoxy
-epoxy = openmc.Material(name="Epoxy")
-epoxy.add_element("C", 0.70, "wo")
-epoxy.add_element("H", 0.08, "wo")
-epoxy.add_element("O", 0.15, "wo")
-epoxy.add_element("N", 0.07, "wo")
-epoxy.set_density("g/cm3", 1.2)
-
-# helium @5psig
-pressure = 34473.8  # Pa ~ 5 psig
-temperature = 300  # K
-R_he = 2077  # J/(kg*K)
-density = pressure / (R_he * temperature) / 1000  # in g/cm^3
-he = openmc.Material(name="Helium")
-he.add_element("He", 1.0, "ao")
-he.set_density("g/cm3", density)
-
-# lead
-# data from https://wwwrcamnl.wr.usgs.gov/isoig/period/pb_iig.html
-lead = openmc.Material()
-lead.set_density("g/cm3", 11.34)
-lead.add_nuclide("Pb204", 0.014, "ao")
-lead.add_nuclide("Pb206", 0.241, "ao")
-lead.add_nuclide("Pb207", 0.221, "ao")
-lead.add_nuclide("Pb208", 0.524, "ao")
-
-
 if __name__ == "__main__":
     model = baby_model()
     model.run()
     sp = openmc.StatePoint(f"statepoint.{model.settings.batches}.h5")
     tbr_tally = sp.get_tally(name="TBR").get_pandas_dataframe()
 
-    print(f"TBR: {tbr_tally['mean'].iloc[0] :.6e}\n")
-    print(f"TBR std. dev.: {tbr_tally['std. dev.'].iloc[0] :.6e}\n")
+    print(f"TBR: {tbr_tally['mean'].iloc[0]:.6e}\n")
+    print(f"TBR std. dev.: {tbr_tally['std. dev.'].iloc[0]:.6e}\n")
 
     processed_data = {
         "modelled_TBR": {

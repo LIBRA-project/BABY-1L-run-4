@@ -108,56 +108,350 @@
     ],
     "notes": "A-325 positioned under the work surface, cooled with combined blower airflow from the side and small fan from the front. Gap between bottom surface of epoxy and the generator around 1/8 inch. Briefly interrupted to reset MFC.",
     "neutron_detection": {
-        "foils": {
-            "enabled": true,
-            "position": "on generators, at target plane, facing top and bottom",
-            "materials": [
-                {
-                    "position": "A 325 - top",
-                    "material": "Nb",
-                    "designator": "Irradiation 1: Nb Packet #2",
-                    "irradiation_date": "5/1/2025",
-                    "number_of_foils": 2,
-                    "distance_to_source": {
-                        "value": 5.1,
-                        "unit": "cm"
+        "foils": [
+            {
+                "enabled": true,
+                "position": "on generators, at target plane, facing top and bottom",
+                "data_url": "https://zenodo.org/records/15447034/files/250501_1L_BABY_Run4A.zip?download=1",
+                "data_directory": "250501_1L_BABY_Run4A",
+                "materials": [
+                    {
+                        "position": "A 325 - top",
+                        "material": "Nb",
+                        "designator": "Irradiation 1: Nb Packet #2",
+                        "irradiation_date": "5/1/2025",
+                        "number_of_foils": 2,
+                        "distance_to_source": {
+                            "value": 5.1,
+                            "unit": "cm"
+                        },
+                        "mass": {
+                            "value": 0.5695,
+                            "unit": "g"
+                        },
+                        "mass_err": {
+                            "value": 0.0001,
+                            "unit": "g"
+                        },
+                        "thickness": {
+                            "value": 0.02,
+                            "unit": "inch"
+                        },
+                        "measurement_directory":[
+                            "Niobium_20250502_1136_count1/UNFILTERED",
+                            "Niobium_20250503_1633_count2/UNFILTERED",
+                            "Niobium_20250505_0850_count3/UNFILTERED"
+                        ]  
                     },
-                    "mass": {
-                        "value": 0.5695,
-                        "unit": "g"
-                    },
-                    "mass_err": {
-                        "value": 0.0001,
-                        "unit": "g"
-                    },
-                    "thickness": {
-                        "value": 0.02,
-                        "unit": "inch"
+                    {
+                        "position": "A 325 - bottom",
+                        "material": "Zr",
+                        "designator": "Irradiation 1: Zr Packet #1",
+                        "irradiation_date": "5/1/2025",
+                        "number_of_foils": 8,
+                        "distance_to_source": {
+                            "value": 5.1,
+                            "unit": "cm"
+                        },
+                        "mass": {
+                            "value": 0.9036,
+                            "unit": "g"
+                        },
+                        "mass_err": {
+                            "value": 0.0001,
+                            "unit": "g"
+                        },
+                        "thickness": {
+                            "value": 0.04,
+                            "unit": "inch"
+                        },
+                        "measurement_directory":[
+                            "Zirconium_20250501_2329_count1/UNFILTERED",
+                            "Zirconium_20250502_2353_count2/UNFILTERED",
+                            "Zirconium_20250504_1624_count3/UNFILTERED"
+                        ]
                     }
-                },
-                {
-                    "position": "A 325 - bottom",
-                    "material": "Zr",
-                    "designator": "Irradiation 1: Zr Packet #1",
-                    "irradiation_date": "5/1/2025",
-                    "number_of_foils": 8,
-                    "distance_to_source": {
-                        "value": 5.1,
-                        "unit": "cm"
+                ],
+                "background_directory": "Background_20250506_1647_count1/UNFILTERED",
+                "check_sources": {
+                    "Co60 Count 1": {
+                        "directory": "Co60_0_872uCi_2014Mar19_count1/UNFILTERED",
+                        "nuclide": "Co60",
+                        "activity": {
+                            "value": 0.872,
+                            "unit": "uCi",
+                            "date": "2014-03-19"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     },
-                    "mass": {
-                        "value": 0.9036,
-                        "unit": "g"
+                    "Co60 Count 2": {
+                        "directory": "Co60_0_872uCi_2014Mar19_count2/UNFILTERED",
+                        "nuclide": "Co60",
+                        "activity": {
+                            "value": 0.872,
+                            "unit": "uCi",
+                            "date": "2014-03-19"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     },
-                    "mass_err": {
-                        "value": 0.0001,
-                        "unit": "g"
+                    "Co60 Count 3": {
+                        "directory": "Co60_0_872uCi_2014Mar19_count3/UNFILTERED",
+                        "nuclide": "Co60",
+                        "activity": {
+                            "value": 0.872,
+                            "unit": "uCi",
+                            "date": "2014-03-19"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     },
-                    "thickness": {
-                        "value": 0.04,
-                        "unit": "inch"
+                    "Co60 Count 4": {
+                        "directory": "Co60_1_0uCi_2006Jan_count1/UNFILTERED",
+                        "nuclide": "Co60",
+                        "activity": {
+                            "value": 1.0,
+                            "unit": "uCi",
+                            "date": "2006-01-15"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Co60 Count 5": {
+                        "directory": "Co60_1_0uCi_2006Jan_count2/UNFILTERED",
+                        "nuclide": "Co60",
+                        "activity": {
+                            "value": 1.0,
+                            "unit": "uCi",
+                            "date": "2006-01-15"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Cs137 Count 1":{
+                        "directory": "Cs137_4_66uCi_2014Mar19_count1/UNFILTERED",
+                        "nuclide": "Cs137",
+                        "activity": {
+                            "value": 4.66,
+                            "unit": "uCi",
+                            "date": "2014-03-19"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Cs137 Count 2":{
+                        "directory": "Cs137_4_66uCi_2014Mar19_count2/UNFILTERED",
+                        "nuclide": "Cs137",
+                        "activity": {
+                            "value": 4.66,
+                            "unit": "uCi",
+                            "date": "2014-03-19"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Cs137 Count 3": {
+                        "directory": "Cs137_9_38uCi_2023Sep29_count1/UNFILTERED",
+                        "nuclide": "Cs137",
+                        "activity": {
+                            "value": 9.38,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Cs137 Count 4": {
+                        "directory": "Cs137_9_38uCi_2023Sep29_count2/UNFILTERED",
+                        "nuclide": "Cs137",
+                        "activity": {
+                            "value": 9.38,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Cs137 Count 5": {
+                        "directory": "Cs137_9_38uCi_2023Sep29_count3/UNFILTERED",
+                        "nuclide": "Cs137",
+                        "activity": {
+                            "value": 9.38,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Mn54 Count 1": {
+                        "directory": "Mn54_6_27uCi_2016May2_count1/UNFILTERED",
+                        "nuclide": "Mn54",
+                        "activity": {
+                            "value": 6.27,
+                            "unit": "uCi",
+                            "date": "2016-05-02"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Mn54 Count 2": {
+                        "directory": "Mn54_6_27uCi_2016May2_count2/UNFILTERED",
+                        "nuclide": "Mn54",
+                        "activity": {
+                            "value": 6.27,
+                            "unit": "uCi",
+                            "date": "2016-05-02"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Mn54 Count 3": {
+                        "directory": "Mn54_6_27uCi_2016May2_count3/UNFILTERED",
+                        "nuclide": "Mn54",
+                        "activity": {
+                            "value": 6.27,
+                            "unit": "uCi",
+                            "date": "2016-05-02"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Na22 Count 1": {
+                        "directory": "Na22_7_33uCi_2016May2_count1/UNFILTERED",
+                        "nuclide": "Na22",
+                        "activity": {
+                            "value": 7.33,
+                            "unit": "uCi",
+                            "date": "2016-05-02"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Na22 Count 2": {
+                        "directory": "Na22_7_33uCi_2016May2_count2/UNFILTERED",
+                        "nuclide": "Na22",
+                        "activity": {
+                            "value": 7.33,
+                            "unit": "uCi",
+                            "date": "2016-05-02"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Na22 Count 3": {
+                        "directory": "Na22_9_98uCi_2023Sep29_count1/UNFILTERED",
+                        "nuclide": "Na22",
+                        "activity": {
+                            "value": 9.98,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Na22 Count 4": {
+                        "directory": "Na22_9_98uCi_2023Sep29_count2/UNFILTERED",
+                        "nuclide": "Na22",
+                        "activity": {
+                            "value": 9.98,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Na22 Count 5": {
+                        "directory": "Na22_9_98uCi_2023Sep29_count3/UNFILTERED",
+                        "nuclide": "Na22",
+                        "activity": {
+                            "value": 9.98,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     }
-                },
+                }
+            },
+            {
+                "enabled": true,
+                "position": "on generators, at target plane, facing top and bottom",
+                "data_url": "https://zenodo.org/records/15447040/files/250506_1L_BABY_Run4B.zip?download=1",
+                "data_directory": "250506_1L_BABY_Run4B",
+                "materials": [
                 {         
                     "position": "A 325 - top",
                     "material": "Nb",
@@ -179,33 +473,165 @@
                     "thickness": {
                         "value": 0.02,
                         "unit": "inch"
-                    }
+                    },
+                    "measurement_directory":[
+                            "Niobium1_20250507_1750_count1/UNFILTERED",
+                            "Niobium1_20250508_1715_count2/UNFILTERED"
+                        ]
                 },
-                {
-                    "position": "A 325 - bottom",
-                    "material": "Zr",
-                    "designator": "Irradiation 2: Zr Packet #2",
-                    "irradiation_date": "5/6/2025",
-                    "number_of_foils": 6,
-                    "distance_to_source": {
-                        "value": 5.1,
-                        "unit": "cm"
+                    {
+                        "position": "A 325 - bottom",
+                        "material": "Zr",
+                        "designator": "Irradiation 2: Zr Packet #2",
+                        "irradiation_date": "5/6/2025",
+                        "number_of_foils": 6,
+                        "distance_to_source": {
+                            "value": 5.1,
+                            "unit": "cm"
+                        },
+                        "mass": {
+                            "value": 0.6795,
+                            "unit": "g"
+                        },
+                        "mass_err": {
+                            "value": 0.0002,
+                            "unit": "g"
+                        },
+                        "thickness": {
+                            "value": 0.03,
+                            "unit": "inch"
+                        },
+                        "measurement_directory":[
+                            "Zirconium2_20250506_22_32_count1/UNFILTERED",
+                            "Zirconium2_20250507_9_12_count2/UNFILTERED"
+                        ]
+                    }
+                ],
+                "background_directory": "../../irradiation_1/250501_1L_BABY_Run4A/Background_20250506_1647_count1/UNFILTERED",
+                "check_sources": {
+                    "Co60 Count 1": {
+                        "directory": "Co60_0_872uCi_2014Mar19_count1/UNFILTERED",
+                        "nuclide": "Co60",
+                        "activity": {
+                            "value": 0.872,
+                            "unit": "uCi",
+                            "date": "2014-03-19"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     },
-                    "mass": {
-                        "value": 0.6795,
-                        "unit": "g"
+                    "Co60 Count 2": {
+                        "directory": "Co60_0_872uCi_2014Mar19_count2/UNFILTERED",
+                        "nuclide": "Co60",
+                        "activity": {
+                            "value": 0.872,
+                            "unit": "uCi",
+                            "date": "2014-03-19"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     },
-                    "mass_err": {
-                        "value": 0.0002,
-                        "unit": "g"
+                    "Cs137 Count 1": {
+                        "directory": "Cs137_9_38uCi_2023Sep29_count1/UNFILTERED",
+                        "nuclide": "Cs137",
+                        "activity": {
+                            "value": 9.38,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     },
-                    "thickness": {
-                        "value": 0.03,
-                        "unit": "inch"
+                    "Cs137 Count 2": {
+                        "directory": "Cs137_9_38uCi_2023Sep29_count2/UNFILTERED",
+                        "nuclide": "Cs137",
+                        "activity": {
+                            "value": 9.38,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Mn54 Count 1": {
+                        "directory": "Mn54_6_27uCi_2016May2_count1/UNFILTERED",
+                        "nuclide": "Mn54",
+                        "activity": {
+                            "value": 6.27,
+                            "unit": "uCi",
+                            "date": "2016-05-02"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Mn54 Count 2": {
+                        "directory": "Mn54_6_27uCi_2016May2_count2/UNFILTERED",
+                        "nuclide": "Mn54",
+                        "activity": {
+                            "value": 6.27,
+                            "unit": "uCi",
+                            "date": "2016-05-02"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Na22 Count 1": {
+                        "directory": "Na22_9_98uCi_2023Sep29_count1/UNFILTERED",
+                        "nuclide": "Na22",
+                        "activity": {
+                            "value": 9.98,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
+                    },
+                    "Na22 Count 2": {
+                        "directory": "Na22_9_98uCi_2023Sep29_count2/UNFILTERED",
+                        "nuclide": "Na22",
+                        "activity": {
+                            "value": 9.98,
+                            "unit": "uCi",
+                            "date": "2023-09-29"
+                        },
+                        "energies": null,
+                        "intensities": null,
+                        "half_life": {
+                            "value": null,
+                            "unit": null
+                        }
                     }
                 }
-            ]
-        },
+            }
+        ],
         "diamond": {
             "enabled": false,
             "note": null,

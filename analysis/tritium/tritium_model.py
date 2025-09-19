@@ -8,7 +8,7 @@ from libra_toolbox.tritium.lsc_measurements import (
     LSCSample,
     LIBRASample,
 )
-
+from pathlib import Path
 from datetime import datetime
 
 
@@ -169,16 +169,35 @@ for generator in general_data["generators"]:
 # Neutron rate
 
 
-# TODO from Collin's foil analysis, replace with more robust method
-neutron_rate = 8.31e07 * ureg.neutron * ureg.s**-1
-neutron_rate_uncertainty = 4.9e06 * ureg.neutron * ureg.s**-1
+# check if neutron rate is provided in processed_data.json
+processed_data_file = Path("../../data/processed_data.json")
+neutron_rate = None
+if processed_data_file.exists():
+    with open(processed_data_file, "r") as f:
+        processed_data = json.load(f)
+    if "neutron_rate_used_in_model" in processed_data:
+        if processed_data["neutron_rate_used_in_model"]["value"] is not None:
+            neutron_rate = processed_data["neutron_rate_used_in_model"]["value"] * ureg(
+                processed_data["neutron_rate_used_in_model"]["unit"]
+            )
+            neutron_rate_uncertainty = processed_data["neutron_rate_used_in_model"]["error"]* ureg(
+                    processed_data["neutron_rate_used_in_model"]["unit"]
+                )
+            print(
+                f"Using neutron rate from processed_data.json: {neutron_rate} ± {neutron_rate_uncertainty}"
+            )
+if neutron_rate is None:
+    neutron_rate = 9.0e07 * ureg.neutron * ureg.s**-1 # based on manufacturer test data for generator settings
+    neutron_rate_uncertainty = 2.0e07 * ureg.neutron * ureg.s**-1
+    print(
+        f"Using default neutron rate: {neutron_rate} ± {neutron_rate_uncertainty}"
+    )
+
 neutron_rate_relative_uncertainty = (neutron_rate_uncertainty / neutron_rate).to(
     ureg.dimensionless
 )
 
 # TBR from OpenMC
-
-from pathlib import Path
 
 filename = "../neutron/statepoint.100.h5"
 filename = Path(filename)
@@ -252,6 +271,7 @@ processed_data = {
     "neutron_rate_used_in_model": {
         "value": baby_model.neutron_rate.magnitude,
         "unit": str(baby_model.neutron_rate.units),
+        "error": neutron_rate_uncertainty.magnitude,
     },
     "measured_TBR": {
         "value": measured_TBR.magnitude,

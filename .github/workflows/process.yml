@@ -31,6 +31,13 @@ jobs:
           python openmc_model.py
           jupyter-nbconvert --to notebook postprocessing.ipynb --execute
 
+      - name: Run foil analysis
+        shell: bash -l {0}
+        working-directory: analysis/neutron
+        run: |
+          papermill foil_analysis.ipynb temp.ipynb -p download_from_raw False
+          jupyter-nbconvert --to notebook --execute temp.ipynb
+
       - name: Run tritium model
         shell: bash -l {0}
         working-directory: analysis/tritium
