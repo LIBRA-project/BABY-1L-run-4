@@ -54,9 +54,9 @@
         }
     ],
     "neutron_rate_used_in_model": {
-        "value": 79978777.20050898,
-        "unit": "neutron / second",
-        "error": 1496306.6551977792
+        "value": 83592319.3583453,
+        "error": 5877276.206834447,
+        "unit": "neutron / second"
     },
     "measured_TBR": {
         "value": 0.002576399043748016,

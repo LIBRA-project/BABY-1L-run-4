@@ -17,7 +17,7 @@ dependencies:
   - papermill
   - pip
   - pip:
-      - libra-toolbox>=0.9.3
+      - libra-toolbox>=0.10
       - openmc_data_downloader
       - matplotlib-label-lines
       - h-transport-materials
